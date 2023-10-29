@@ -1,14 +1,12 @@
-import { Fragment } from "react";
-import { MouseEvent } from "react";
+import { useState } from "react";
 
 function Message() {
   const items = ["Ethiopia", "somalia", "congo", "angola", "comoros"];
-  const selectItems = 0;
 
-  const handleClick = (event: MouseEvent) => console.log(event);
+  const [selectItems, setSelectedItems] = useState(-1);
 
   return (
-    <Fragment>
+    <>
       <h1> List Items</h1>
       <ul className="list-group">
         {items.map((item, index) => (
@@ -19,13 +17,13 @@ function Message() {
                 ? "list-group-item active"
                 : "list-group-item"
             }
-            onClick={handleClick}
+            onClick={() => setSelectedItems(index)}
           >
             {item}
           </li>
         ))}
       </ul>
-    </Fragment>
+    </>
   );
 }
 
